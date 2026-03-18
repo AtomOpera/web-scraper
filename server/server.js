@@ -4,6 +4,21 @@ const cheerio = require('cheerio');
 
 const app = express();
 
+// Recursive function to convert HTML element to JSON
+function elementToJson(el, $) {
+  const children = [];
+  $(el)
+    .children()
+    .each((i, c) => children.push(elementToJson(c, $)));
+
+  return {
+    tag: el.tagName,
+    text: $(el).text().trim(),
+    attrs: el.attribs,
+    children,
+  };
+}
+
 app.get('/api/scrape', async (req, res) => {
   try {
     const { data } = await axios.get('https://example.com', {
@@ -14,9 +29,15 @@ app.get('/api/scrape', async (req, res) => {
 
     const $ = cheerio.load(data);
 
-    const title = $('title').text();
+    // Top-level HTML element
+    const htmlElement = $('html')[0];
 
-    res.json({ title });
+    const json = elementToJson(htmlElement, $);
+
+    res.json(json);
+
+    // const title = $('title').text();
+    // res.json({ title });
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ error: 'Scraping failed' });
