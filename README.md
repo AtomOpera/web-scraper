@@ -6,6 +6,7 @@ This is a simple fullstack web scraping project using **Node.js + Express** for 
 
 ## 📁 Project Structure
 
+```
 web-scraper/
 │
 ├── server/ # Node/Express backend
@@ -19,6 +20,7 @@ web-scraper/
 │
 ├── package.json # Project dependencies & scripts
 └── README.md # This file
+```
 
 ---
 
