@@ -4,6 +4,12 @@ const cheerio = require('cheerio');
 
 const app = express();
 
+const https = require('https');
+
+const agent = new https.Agent({
+  rejectUnauthorized: false,
+});
+
 // Recursive function to convert HTML element to JSON
 function elementToJson(el, $) {
   const children = [];
@@ -24,7 +30,8 @@ app.get('/api/scrape', async (req, res) => {
     const { data } = await axios.get('https://example.com', {
       headers: {
         "User-Agent": "Mozilla/5.0"
-      }
+      },
+      httpsAgent: agent
     });
 
     const $ = cheerio.load(data);
