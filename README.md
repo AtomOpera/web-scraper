@@ -11,14 +11,16 @@ web-scraper/
 │
 ├── server/ # Node/Express backend
 │ ├── server.js # Main server setup
-│ └── routes/ # API routes/endpoints
-│ └── scrape.js # Example scraping endpoint
+│ ├── routes/ # API routes/endpoints
+│ ├── scrape.js # Example scraping endpoint
+│ └── package.json # Project dependencies & scripts
 │
 ├── client/ # Frontend application
 │ ├── src/ # Frontend source code
-│ └── index.html # Entry HTML file
+│ ├── index.html # Entry HTML file
+│ └── package.json # Project dependencies & scripts
 │
-├── package.json # Project dependencies & scripts
+├── .gitignore #for repository
 └── README.md # This file
 ```
 

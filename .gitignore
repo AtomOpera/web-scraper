@@ -1,5 +1,37 @@
 # .gitignore
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
 node_modules/
-.DS_Store
+# Optional: Ignore node_modules in both client and server directories if they exist
+client/node_modules/
+server/node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+client/dist/
+server/dist/
+
+# Env files
 .env
-/dist/
+*.local
+
+# Editor / OS files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
